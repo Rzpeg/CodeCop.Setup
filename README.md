@@ -4,7 +4,7 @@ Fluent API Wrapper for [CodeCop][2]
 What?
 ====
 
-A Fluent API wrapper package for [CodeCop][2], enabling a clean way of configuring interceptors via code.
+A Fluent API wrapper package for [CodeCop][2], providing an alternative way of configuring interceptors using the code.
 
 Why ?
 ====
@@ -16,7 +16,7 @@ I also want to add some features missing from the [CodeCop][2], such as (but not
 How ?
 ====
 
-Everything resolves arround the configration API.
+Everything resolves arround the configuration API.
   
     Setup
         .Build()
