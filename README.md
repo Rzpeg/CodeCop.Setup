@@ -31,7 +31,8 @@ Everything resolves arround the configration API.
         .Create()
         .Activate();
 
-The sample application CodeCop.Setup.Demo comes with the solution.
+The sample console application CodeCop.Setup.Demo comes with the solution.
+The documentation file is located in <b>Help</b> folder.
 
 License
 ====
