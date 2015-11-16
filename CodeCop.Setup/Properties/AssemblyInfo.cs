@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CodeCop.Setup")]
 [assembly: AssemblyDescription("CodeCop Fluent API Wrapper")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Stanislav")]
 [assembly: AssemblyProduct("CodeCop.Setup")]
 [assembly: AssemblyCopyright("Copyright © Stanislav 2015")]
 [assembly: AssemblyTrademark("")]
