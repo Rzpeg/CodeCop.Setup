@@ -1,2 +1,23 @@
 # CodeCop.Setup
-Fluent API for CodeCop
+Fluent API for [CodeCop][2]
+
+What?
+====
+
+A Fluent API wrapper package for [CodeCop][2], enabling a clean way of configuring interceptors via code.
+
+Why ?
+The default [CodeCop][2] "Fluent API" is not intuitive, sometimes confusing and really, not that <i>fluent</i>.
+So I decided to fix it by building a completely new API. 
+
+I also want to add some features missing from the [CodeCop][2], such as (but not limited to) loading hooks from various locations, including databases, files, and assemblies, integrating with your favourite IoC container and the likes. 
+
+# How ?
+
+
+# License
+The package is licensed under under [The MIT License (MIT)][1].
+
+
+[1]: http://opensource.org/licenses/MIT
+[2]: http://getcodecop.com
