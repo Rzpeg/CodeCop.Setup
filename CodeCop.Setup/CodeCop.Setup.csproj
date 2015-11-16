@@ -62,6 +62,7 @@
     <Compile Include="Setup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCop.Setup.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

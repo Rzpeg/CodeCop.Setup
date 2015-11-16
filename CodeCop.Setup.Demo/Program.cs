@@ -15,7 +15,7 @@ namespace CodeCop.Setup.Demo
             DoAnotherStuff();
             Console.WriteLine();
 
-            CodeCop.Setup.Setup
+            Setup
                 .Build()
                 .InterceptMethodIn<Program>(nameof(DoStuff), Intercept.Before,
                     ctx =>
