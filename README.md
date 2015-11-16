@@ -17,6 +17,21 @@ I also want to add some features missing from the [CodeCop][2], such as (but not
 How ?
 ====
 
+Everything resolves arround the configration API.
+  
+    Setup
+        .Build()
+        .InterceptMethodIn<Program>(nameof(DoStuff), Intercept.Before,
+            ctx =>
+            {
+                Console.WriteLine("InterceptOn.Before > DoStuff !");
+                return null;
+            })
+        .InterceptMethodIn<Program>(nameof(DoAnotherStuff), new MyInterceptor())
+        .Create()
+        .Activate();
+
+The sample application CodeCop.Setup.Demo comes with the solution.
 
 License
 ====
