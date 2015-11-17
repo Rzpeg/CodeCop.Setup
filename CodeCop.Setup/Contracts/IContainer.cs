@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CodeCop.Setup.Contracts
 {
@@ -22,10 +24,16 @@ namespace CodeCop.Setup.Contracts
         IEnumerable<TService> ResolveAll<TService>();
 
         /// <summary>
-        /// Registers the specified service.
+        /// Registers the specified service as implemented interfaces.
         /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <param name="service">The requested service implementation.</param>
-        void Register<TService>(TService service);
+        /// <param name="service">The requested service(s) implementation.</param>
+        void Register(object service);
+
+        /// <summary>
+        /// Resolves all the services of the given type.
+        /// </summary>
+        /// <param name="service">The type.</param>
+        /// <returns>IEnumerable&lt;System.Object&gt; containing all registered implementation of the requested service.</returns>
+        IEnumerable<object> ResolveAll(Type service);
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ITypedInterceptor.cs" />
     <Compile Include="Infrastructure\ConfiguratorFor.cs" />
     <Compile Include="Infrastructure\CopBuilder.cs" />
     <Compile Include="Infrastructure\CopConfiguration.cs" />

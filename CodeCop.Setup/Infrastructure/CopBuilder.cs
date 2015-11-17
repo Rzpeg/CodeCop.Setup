@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using CodeCop.Core;
 using CodeCop.Core.Fluent;
 using CodeCop.Setup.Contracts;
@@ -6,6 +8,7 @@ using CodeCop.Setup.Enums;
 
 namespace CodeCop.Setup.Infrastructure
 {
+    
     /// <summary>
     /// Fluent API builder.
     /// </summary>
@@ -18,6 +21,8 @@ namespace CodeCop.Setup.Infrastructure
         {
             this.container = container;
             this.methodFinder = methodFinder;
+
+            ApplyInjectedInterceptors();
         }
 
         /// <summary>
@@ -91,14 +96,21 @@ namespace CodeCop.Setup.Infrastructure
           IInterceptor interceptor)
            where TClass : class
         {
-            var method = typeof(TClass).GetMethod(methodName);
+            var method = this.methodFinder.FindIn<TClass>(methodName);
 
-            method.OnError(interceptor.OnError);
+            ApplyInterceptorToMethod(interceptor, method);
 
-            method.DecorateBefore(interceptor.OnBeforeExecute);
-            method.DecorateAfter(interceptor.OnAfterExecute);
-            method.Override(interceptor.OnOverride);
+            return this;
+        }
 
+        /// <summary>
+        /// Uses the provided <see cref="ITypedInterceptor"/> to create hooks.
+        /// </summary>
+        /// <param name="interceptor">The typed interceptor.</param>
+        /// <returns><see cref="CopBuilder"/> instance.</returns>
+        public CopBuilder UseInterceptor(ITypedInterceptor interceptor)
+        {
+            ApplyTypedInterceptor(interceptor);
             return this;
         }
 
@@ -109,6 +121,31 @@ namespace CodeCop.Setup.Infrastructure
         public CopConfiguration Create()
         {
             return new CopConfiguration(this.container);
+        }
+
+
+        private void ApplyInjectedInterceptors()
+        {
+            foreach (var typedInterceptor in this.container.ResolveAll<ITypedInterceptor>())
+            {
+                ApplyTypedInterceptor(typedInterceptor);
+            }
+        }
+
+        private static void ApplyTypedInterceptor(ITypedInterceptor typedInterceptor)
+        {
+            foreach (var method in typedInterceptor.TargetMethods.Select(targetMethod => typedInterceptor.TargetType.GetMethod(targetMethod)))
+            {
+                ApplyInterceptorToMethod(typedInterceptor, method);
+            }
+        }
+
+        private static void ApplyInterceptorToMethod(IInterceptor interceptor, MethodInfo method)
+        {
+            method.OnError(interceptor.OnError);
+            method.DecorateBefore(interceptor.OnBeforeExecute);
+            method.DecorateAfter(interceptor.OnAfterExecute);
+            method.Override(interceptor.OnOverride);
         }
     }
 }

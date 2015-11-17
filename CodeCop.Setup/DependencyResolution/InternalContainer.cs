@@ -17,15 +17,30 @@ namespace CodeCop.Setup.DependencyResolution
 
         public IEnumerable<TService> ResolveAll<TService>()
         {
-            return this.implementations[typeof (TService)].Cast<TService>();
+            if (this.implementations.ContainsKey(typeof(TService)))
+                return this.implementations[typeof (TService)].Cast<TService>();
+
+            return Enumerable.Empty<TService>();
         }
 
-        public void Register<TService>(TService service)
+        public void Register(object service)
         {
-            if (!this.implementations.ContainsKey(typeof(TService)))
-                this.implementations[typeof (TService)] = new List<dynamic>();
+            var interfaces = service.GetType().GetInterfaces();
+            foreach (var @interface in interfaces)
+            {
+                if (!this.implementations.ContainsKey(@interface))
+                    this.implementations[@interface] = new List<dynamic>();
 
-            this.implementations[typeof (TService)].Add(service);
+                this.implementations[@interface].Add(service);
+            }
+        }
+
+        public IEnumerable<object> ResolveAll(Type service)
+        {
+            if (this.implementations.ContainsKey(service))
+                return this.implementations[service];
+
+            return Enumerable.Empty<object>();
         }
     }
 }

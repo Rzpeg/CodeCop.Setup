@@ -15,6 +15,12 @@ namespace CodeCop.Setup.Demo
             DoAnotherStuff();
             Console.WriteLine();
 
+            DoMoreStuff();
+            Console.WriteLine();
+
+            DoBetterStuff();
+            Console.WriteLine();
+
             Setup
                 .Build()
                 .InterceptMethodIn<Program>(nameof(DoStuff), Intercept.Before,
@@ -36,6 +42,7 @@ namespace CodeCop.Setup.Demo
                         return null;
                     })
                 .InterceptMethodIn<Program>(nameof(DoAnotherStuff), new MyInterceptor())
+                .UseInterceptor(new ProgramTypedInterceptor())
                 .Create()
                 .Activate();
 
@@ -44,8 +51,15 @@ namespace CodeCop.Setup.Demo
 
             DoAnotherStuff();
             Console.WriteLine();
+
+            DoMoreStuff();
+            Console.WriteLine();
+
+            DoBetterStuff();
+            Console.WriteLine();
         }
 
+       
         public static void DoStuff()
         {
             Console.WriteLine(nameof(DoStuff));
@@ -54,6 +68,16 @@ namespace CodeCop.Setup.Demo
         public static void DoAnotherStuff()
         {
             Console.WriteLine(nameof(DoAnotherStuff));
+        }
+
+        public static void DoMoreStuff()
+        {
+            Console.WriteLine(nameof(DoMoreStuff));
+        }
+
+        public static void DoBetterStuff()
+        {
+            Console.WriteLine(nameof(DoBetterStuff));
         }
     }
 }
