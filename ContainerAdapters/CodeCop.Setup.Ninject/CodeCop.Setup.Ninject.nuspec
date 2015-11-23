@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/Rzpeg/CodeCop.Setup/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Rzpeg/CodeCop.Setup</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Ninject container adapter for CodeCop.Setup.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>CodeCop FluentApi Ninject ioc</tags>
+  </metadata>
+</package>
