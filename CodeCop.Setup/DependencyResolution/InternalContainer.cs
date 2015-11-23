@@ -23,16 +23,12 @@ namespace CodeCop.Setup.DependencyResolution
             return Enumerable.Empty<TService>();
         }
 
-        public void Register(object service)
+        public void Register<TService>(TService service)
         {
-            var interfaces = service.GetType().GetInterfaces();
-            foreach (var @interface in interfaces)
-            {
-                if (!this.implementations.ContainsKey(@interface))
-                    this.implementations[@interface] = new List<dynamic>();
+            if (!this.implementations.ContainsKey(typeof (TService)))
+                this.implementations[typeof (TService)] = new List<dynamic>();
 
-                this.implementations[@interface].Add(service);
-            }
+            this.implementations[typeof (TService)].Add(service);
         }
 
         public IEnumerable<object> ResolveAll(Type service)
