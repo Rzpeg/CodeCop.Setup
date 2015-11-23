@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/Rzpeg/CodeCop.Setup</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Added the possibility to create a typed interceptor that contains its targets.</releaseNotes>
+    <releaseNotes>Refactored internal container and prepared for external DI containers.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>CodeCop FluentApi</tags>
   </metadata>

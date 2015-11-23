@@ -6,7 +6,7 @@ namespace CodeCop.Setup.Infrastructure
     /// <summary>
     /// Generic configurator.
     /// </summary>
-    /// <typeparam name="TService">The type of the t service.</typeparam>
+    /// <typeparam name="TService">The type of the service.</typeparam>
     public class ConfiguratorFor<TService>
     {
         private readonly IContainer container;

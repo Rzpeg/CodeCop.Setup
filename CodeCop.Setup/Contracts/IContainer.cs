@@ -24,16 +24,9 @@ namespace CodeCop.Setup.Contracts
         IEnumerable<TService> ResolveAll<TService>();
 
         /// <summary>
-        /// Registers the specified service as implemented interfaces.
+        /// Registers the specified service.
         /// </summary>
         /// <param name="service">The requested service(s) implementation.</param>
-        void Register(object service);
-
-        /// <summary>
-        /// Resolves all the services of the given type.
-        /// </summary>
-        /// <param name="service">The type.</param>
-        /// <returns>IEnumerable&lt;System.Object&gt; containing all registered implementation of the requested service.</returns>
-        IEnumerable<object> ResolveAll(Type service);
+        void Register<TService>(TService service);
     }
 }
