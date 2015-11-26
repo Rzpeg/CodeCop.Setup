@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/Rzpeg/CodeCop.Setup</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Refactored internal container and prepared for external DI containers.</releaseNotes>
+    <releaseNotes>Bumped CodeCop version to 3.0.0.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>CodeCop FluentApi</tags>
   </metadata>
